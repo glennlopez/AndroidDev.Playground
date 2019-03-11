@@ -1,5 +1,7 @@
 package demo
 
+import java.util.Random
+
 fun main(): Unit {
     println("Hello World!")
     println("Hello Glenn...")
@@ -107,17 +109,113 @@ fun main(): Unit {
         // type specific array
         var intArray: Array<Int> = arrayOf(1,2,3) // try and add a char or string
         println("Int specific array: ${intArray.asList()}")
+        println()
+
 
 
     /*
      * Ranges: https://youtu.be/H_oGi8uuDpA?t=1576
      */
         var oneToTen = 1..10
-        var tenToOne = 10.downTo(1)
-        var sevenToThirty = se
-        var alphabet = "A".."Z"
         println("oneToTen: ${oneToTen.toList()}")
-        println("tenToOne: " + tenToOne.toList())
+
+        var tenToOne = 10.downTo(1)
+        //println("tenToOne: " + tenToOne.toList())
+        print("tenToOne: ")
+        for(item in tenToOne.reversed()) print("${item} ") //reversed
+        println()
+
+        var sevenToThirty = 7.rangeTo(30)
+        println("7 to 30: ${sevenToThirty.toList()}")
+
+        var alphabet = "A".."Z"
         println("G is in alphabet range: ${"G" in alphabet}")
+
+        var skip3_oneToTen = oneToTen.step(3)
+        //println("1 - 10 stepping 3: ${skip3_oneToTen.toList()}")
+        print("1 - 10 stepping in 3's: ")
+        for (item in skip3_oneToTen)
+        {
+            print(item.toString() + " ")
+        }
+        println()
+        println()
+
+
+
+    /*
+     * Conditionals: https://youtu.be/H_oGi8uuDpA?t=1796
+     */
+        // if - else conditionals
+        val myAge = 8
+
+        if (myAge < 5) println("Go to pre-school.")
+        else if (myAge == 5) println("Go to kindergarten.")
+        else if ( (myAge > 5) && (myAge <= 17) )
+        {
+            val grade = (myAge - 5)
+            println("Go to grade $grade.")
+        }
+        else println("Go to College!")
+        println()
+
+
+        // when - replaces switch case statements
+        // https://kotlinlang.org/docs/reference/control-flow.html
+        val bearAge = 7
+
+        when (bearAge)
+        {
+            0,1,2,3,4 -> println("Bear goes to pre-school.")
+            5 -> println("Bear goes to Kindergarten")
+
+            in 6..17 ->
+            {
+                val bearGrade = bearAge - 5
+                println("Bear goes to grade $bearGrade")
+            }
+            else -> println("Bear goes to College.")
+        }
+        println()
+
+
+    /*
+     * Loops - https://youtu.be/H_oGi8uuDpA?t=2046
+     */
+        // for loops
+        for (x in 1..10)
+        {
+            println("This is a loop: $x")
+        }
+
+        for (x in 1..20)
+        {
+            if (x % 2 == 0)
+            {
+                continue        // continue to the next iteration
+            }
+            println("Odd: $x")
+
+            if (x == 15) break // break out of the for loop
+        }
+
+        var myArray3: Array<Int> = arrayOf(3,6,9)
+        for (i in myArray3.indices )
+        {
+            println("myArray[$i] is ${myArray3[i]}")
+        }
+
+        // while loop
+        val magicNumber = Random().nextInt(50) + 1
+        var guess = 0
+
+        while (magicNumber != guess)
+        {
+            guess++
+        }
+        println("Magic Number (Random): $guess")
+
+
+
 
 }
