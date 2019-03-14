@@ -18,7 +18,7 @@ fun main(): Unit {
 
 
     /* Type inference: https://youtu.be/H_oGi8uuDpA?t=525
-     * Kotlin is able to understand what datatype
+     * Kotlin is able to understand what data type
      * you are using but you can also define it yourself
      */
         var bigInt: Int =  Int.MAX_VALUE
@@ -113,6 +113,7 @@ fun main(): Unit {
 
 
 
+
     /*
      * Ranges: https://youtu.be/H_oGi8uuDpA?t=1576
      */
@@ -140,6 +141,7 @@ fun main(): Unit {
         }
         println()
         println()
+
 
 
 
@@ -179,6 +181,7 @@ fun main(): Unit {
         println()
 
 
+
     /*
      * Loops - https://youtu.be/H_oGi8uuDpA?t=2046
      */
@@ -194,16 +197,31 @@ fun main(): Unit {
             {
                 continue        // continue to the next iteration
             }
-            println("Odd: $x")
+            println("Odd: $x") 
 
-            if (x == 15) break // break out of the for loop
+            if (x == 15) break // break o ut of the for loop
+        }
+
+        for (x in 1..10)
+        {
+            if (x % 2 != 0)
+            {
+                continue    // skips odd numbers
+            }
+            println("Even: $x")
+
+            if (x == 8)
+            {
+                break // break out of for loop
+            }
         }
 
         var myArray3: Array<Int> = arrayOf(3,6,9)
-        for (i in myArray3.indices )
+        for (i in myArray3.indices)
         {
             println("myArray[$i] is ${myArray3[i]}")
         }
+
 
         // while loop
         val magicNumber = Random().nextInt(50) + 1
@@ -214,8 +232,36 @@ fun main(): Unit {
             guess++
         }
         println("Magic Number (Random): $guess")
+        println()
 
 
+
+
+    /*
+     * Functions inside Main() - https://youtu.be/H_oGi8uuDpA
+     */
+        // single-line functions
+        fun add (num1: Int, num2: Int) : Int = num1 + num2
+        println("Adding: 2 + 6 = ${add(2,6)}")
+
+        // single-line function
+        fun diff (num1: Int = 1, num2: Int = 5) = num1 - num2
+        println("Adding: 30 + 6 = ${diff(30,6)}")  // with pre-defined
+        println("Adding: default values = ${diff()}")           // with default value
+
+        //
+        fun helloWorld(msg2: String = "World", msg1: String = "Hello ") : String = msg1 + msg2
+        println("${helloWorld()}")
+        println("${helloWorld("Glenn")}")
+
+        //
+        fun sayHello(name: String) : Unit = println("Hello, $name")
+        sayHello("Glenn")
+
+        // function literals
+        var multiply = {num1: Int, num2: Int -> num1 * num2}
+        println("Function literal: ${multiply(5, 10)}")
 
 
 }
+
