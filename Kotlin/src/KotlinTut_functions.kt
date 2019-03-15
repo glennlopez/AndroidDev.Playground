@@ -42,3 +42,5 @@ fun main(): Unit
         names.forEach { s -> cat += s }
         return cat
     }
+
+    // higher order function
